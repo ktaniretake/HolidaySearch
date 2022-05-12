@@ -11,6 +11,7 @@ namespace HolidaySearch.Services
   public class HolidaySearchService
   {
     public static List<IDatabase> _databases = new List<IDatabase>();
+    public List<Result> _results = new List<Result>();
     public HolidaySearchService(List<IDatabase> databases)
     {
       _databases = databases;
@@ -21,7 +22,7 @@ namespace HolidaySearch.Services
       }
     }
 
-    public List<Result> FindHoliday()
+    public void FindHoliday(HolidaySearchData holidaySearchData)
     {
       throw new NotImplementedException();
     }

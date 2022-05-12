@@ -14,8 +14,8 @@ namespace HolidaySearch.Models
     public double Price { get; set; }
 
     [JsonProperty(PropertyName = "local_airports")]
-    public List<string> LocalAirportNames { get; set; }
-    public List<Airport> LocalAirports { get; set; }
+    public List<string> LocalAirportNames { get; set; } = new List<string>();
+    public List<Airport> LocalAirports { get; set; } = new List<Airport>();
     public int Nights { get; set; }
   }
 }
