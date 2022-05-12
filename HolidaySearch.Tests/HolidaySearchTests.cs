@@ -34,7 +34,7 @@ namespace HolidaySearch.Tests
 
       var result = _holidaySearch._results.First();
 
-      Assert.AreEqual("826", result.TotalPrice);
+      Assert.AreEqual(826, result.TotalPrice);
       Assert.AreEqual(2, result.Flight.Id);
       Assert.AreEqual(9, result.Hotel.Id);
     }
@@ -54,7 +54,7 @@ namespace HolidaySearch.Tests
 
       var result = _holidaySearch._results.First();
 
-      Assert.AreEqual("675", result.TotalPrice);
+      Assert.AreEqual(675, result.TotalPrice);
       Assert.AreEqual(6, result.Flight.Id);
       Assert.AreEqual(5, result.Hotel.Id);
     }
@@ -73,7 +73,7 @@ namespace HolidaySearch.Tests
 
       var result = _holidaySearch._results.First();
 
-      Assert.AreEqual("1175", result.TotalPrice);
+      Assert.AreEqual(1175, result.TotalPrice);
       Assert.AreEqual(7, result.Flight.Id);
       Assert.AreEqual(6, result.Hotel.Id);
     }

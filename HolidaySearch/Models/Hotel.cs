@@ -8,7 +8,7 @@ namespace HolidaySearch.Models
     public string Name { get; set; } = string.Empty;
 
     [JsonProperty(PropertyName = "arrival_date")]
-    public DateTime ArrivalDate { get; set; }
+    public DateTimeOffset ArrivalDate { get; set; }
 
     [JsonProperty(PropertyName = "price_per_night")]
     public double Price { get; set; }

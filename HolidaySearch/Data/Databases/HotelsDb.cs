@@ -6,6 +6,7 @@ namespace HolidaySearch.Data.Databases
 {
   public class HotelsDb : IDatabase
   {
+    private string DbName = "HotelsDb";
     public static List<Hotel>? _hotels = new List<Hotel>();
     private AirportService _airportService;
 
@@ -49,6 +50,19 @@ namespace HolidaySearch.Data.Databases
       }
 
       return;
+    }
+
+    public string GetDbName()
+    {
+      return DbName;
+    }
+
+    public List<Hotel> GetHotelsList()
+    {
+      if (_hotels == null)
+        throw new NullReferenceException();
+
+      return _hotels;
     }
   }
 }

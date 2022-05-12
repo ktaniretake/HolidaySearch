@@ -3,5 +3,6 @@
   public interface IDatabase
   {
     void LoadDatabase();
+    string GetDbName();
   }
 }

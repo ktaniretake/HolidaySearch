@@ -13,6 +13,6 @@ namespace HolidaySearch.Models
     public double Price { get; set; }
 
     [JsonProperty(PropertyName = "departure_date")]
-    public DateTime DepartureDate { get; set; }
+    public DateTimeOffset DepartureDate { get; set; }
   }
 }
