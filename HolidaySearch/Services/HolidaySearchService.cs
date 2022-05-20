@@ -7,7 +7,6 @@ namespace HolidaySearch.Services
   public class HolidaySearchService
   {
     public static List<IDatabase> _databases = new List<IDatabase>();
-    public List<Result> _results = new List<Result>();
     public HolidaySearchService(List<IDatabase> databases)
     {
       _databases = databases;
@@ -18,12 +17,24 @@ namespace HolidaySearch.Services
       }
     }
 
-    public void FindHoliday(HolidaySearchData holidaySearchData)
+    public List<Result> FindHoliday(HolidaySearchData holidaySearchData)
     {
+      var results = new List<Result>();
+
       var flightsDb = (FlightsDb)_databases.Find(x => x.GetDbName() == "FlightsDb");
+
+      if (flightsDb == null)
+        throw new ArgumentNullException(nameof(flightsDb));
+
       var hotelsDb = (HotelsDb)_databases.Find(x => x.GetDbName() == "HotelsDb");
 
+      if (hotelsDb == null)
+        throw new ArgumentNullException(nameof(hotelsDb));
+
       var flights = FindFlights(holidaySearchData, flightsDb);
+
+      if (flights == null)
+        throw new ArgumentNullException(nameof(flights));
 
       foreach (var flight in flights)
       {
@@ -34,16 +45,15 @@ namespace HolidaySearch.Services
 
         foreach (var hotel in hotels)
         {
-          _results.Add(new Result(flight, hotel));
+          results.Add(new Result(flight, hotel));
         }
       }
+
+      return results;
     }
 
-    private List<Flight> FindFlights(HolidaySearchData holidaySearchData, FlightsDb? database)
+    private List<Flight> FindFlights(HolidaySearchData holidaySearchData, FlightsDb database)
     {
-      if (database == null)
-        throw new ArgumentNullException(nameof(database));
-
       var flights = database.GetFlightsList().OrderBy(x => x.Price).ToList();
       var result = new List<Flight>();
 
@@ -78,14 +88,8 @@ namespace HolidaySearch.Services
       return result;
     }
 
-    private List<Hotel> FindHotels(Flight? flight, int duration, HotelsDb? database)
+    private List<Hotel> FindHotels(Flight flight, int duration, HotelsDb database)
     {
-      if (flight == null)
-        throw new ArgumentNullException(nameof(flight));
-
-      if (database == null)
-        throw new ArgumentNullException(nameof(database));
-
       var hotels = database.GetHotelsList();
       var result = new List<Hotel>();
 
