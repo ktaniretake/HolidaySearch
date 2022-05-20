@@ -62,22 +62,16 @@ namespace HolidaySearch.Services
       foreach (var flight in flights)
       {
         if (holidaySearchData.FromCity != null)
-        {
           if (flight.DepartureAirport.City != holidaySearchData.FromCity)
             continue;
-        }
 
         if (holidaySearchData.FromAirportName != null)
-        {
           if (flight.DepartureAirport.Name != holidaySearchData.FromAirportName)
             continue;
-        }
 
         if (holidaySearchData.ToAirportName != null)
-        {
           if (flight.DestinationAirport.Name != holidaySearchData.ToAirportName)
             continue;
-        }
 
         if (flight.DepartureDate != searchedDate)
           continue;
