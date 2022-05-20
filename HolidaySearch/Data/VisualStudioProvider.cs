@@ -6,6 +6,7 @@
     {
       var directory = new DirectoryInfo(
           currentPath ?? Directory.GetCurrentDirectory());
+
       while (directory != null && !directory.GetFiles("*.sln").Any())
       {
         directory = directory.Parent;

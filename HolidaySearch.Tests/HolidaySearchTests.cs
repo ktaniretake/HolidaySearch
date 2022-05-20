@@ -30,9 +30,9 @@ namespace HolidaySearch.Tests
         Duration = 7
       };
 
-      _holidaySearch.FindHoliday(holidaySeachData);
+      var resultsList = _holidaySearch.FindHoliday(holidaySeachData);
 
-      var result = _holidaySearch._results.First();
+      var result = resultsList.First();
 
       Assert.AreEqual(826, result.TotalPrice);
       Assert.AreEqual(2, result.Flight.Id);
@@ -50,9 +50,9 @@ namespace HolidaySearch.Tests
         Duration = 10
       };
 
-      _holidaySearch.FindHoliday(holidaySeachData);
+      var resultsList = _holidaySearch.FindHoliday(holidaySeachData);
 
-      var result = _holidaySearch._results.First();
+      var result = resultsList.First();
 
       Assert.AreEqual(675, result.TotalPrice);
       Assert.AreEqual(6, result.Flight.Id);
@@ -69,9 +69,9 @@ namespace HolidaySearch.Tests
         Duration = 14
       };
 
-      _holidaySearch.FindHoliday(holidaySeachData);
+      var resultsList = _holidaySearch.FindHoliday(holidaySeachData);
 
-      var result = _holidaySearch._results.First();
+      var result = resultsList.First();
 
       Assert.AreEqual(1175, result.TotalPrice);
       Assert.AreEqual(7, result.Flight.Id);
